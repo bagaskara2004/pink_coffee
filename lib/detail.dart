@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:pink_coffee/model/product.dart';
 
@@ -34,8 +36,8 @@ class Detail extends StatelessWidget {
                   height: 300,
                   width: double.infinity,
                   child: ClipRRect(
-                      child: Image.asset(
-                        'images/${product?.photo}',
+                      child: Image.file(
+                        File('${product?.photo}'),
                         fit: BoxFit.cover,
                       )),
                 ),
@@ -89,7 +91,7 @@ class Detail extends StatelessWidget {
                         ),
                         maxLines: 3,
                         textAlign: TextAlign.end,
-                      ),)
+                      ),),
                   ],
                 ),
                 

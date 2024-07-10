@@ -17,16 +17,15 @@ class _LoginState extends State<Login> {
 
   @override
   void initState() {
-    // addUser();
     super.initState();
   }
 
-  void validate() async {
+  void validate(context) async {
     List? data = await db.findUser(email.text);
 
     if (data!.isNotEmpty) {
       if (data[0]['password'] == password.text) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Dashboard()));
       } else {
         _showAlertDialog(
             context, 'Wrong Password', 'Password yang anda masukan salah');
@@ -38,7 +37,6 @@ class _LoginState extends State<Login> {
         _showAlertDialog(context, 'Not Found', 'Email tidak ditemukan');
       }
     }
-    // print(password.text);
   }
 
   void _showAlertDialog(BuildContext context, title, msg) {
@@ -50,7 +48,7 @@ class _LoginState extends State<Login> {
           content: Text(msg),
           actions: <Widget>[
             TextButton(
-              child: Text('ok'),
+              child: const Text('ok'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -110,6 +108,7 @@ class _LoginState extends State<Login> {
                     ),
                     TextField(
                       controller: password,
+                      obscureText: true,
                       decoration: InputDecoration(
                         labelText: 'Password',
                         labelStyle: const TextStyle(
@@ -132,7 +131,7 @@ class _LoginState extends State<Login> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        validate();
+                        validate(context);
                       },
                       style: const ButtonStyle(
                           backgroundColor: MaterialStatePropertyAll(

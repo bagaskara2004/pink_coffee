@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:pink_coffee/database/table_product.dart';
 
@@ -118,17 +120,7 @@ class _SearchState extends State<Search> {
                       },
                       child: Column(
                         children: [
-                          SizedBox(
-                            height: 300,
-                            width: double.infinity,
-                            child: ClipRRect(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
-                                child: Image.asset(
-                                  'images/${product.photo}',
-                                  fit: BoxFit.cover,
-                                )),
-                          ),
+                          Image.file(File('${product.photo}')),
                           Container(
                             padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                             width: double.infinity,

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:pink_coffee/detail.dart';
 import 'package:pink_coffee/model/product.dart';
@@ -145,7 +147,7 @@ class _ProductState extends State<ListProduct> {
                   ],
                 )),
             SizedBox(
-              height: 200,
+              height: 220,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: listProduct.length,
@@ -165,16 +167,15 @@ class _ProductState extends State<ListProduct> {
                               child: ClipRRect(
                                   borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
-                                  child: Image.asset(
-                                    'images/${product.photo}',
+                                  child: Image.file(
+                                    File('${product.photo}'),
                                     fit: BoxFit.cover,
                                   )),
                             ),
                             Container(
                               padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                               width: 150,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              child: Column(
                                 children: [
                                   Text(
                                     '${product.name}',
@@ -232,7 +233,7 @@ class _ProductState extends State<ListProduct> {
                   ],
                 )),
             SizedBox(
-              height: 200,
+              height: 220,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: listProduct.length,
@@ -252,16 +253,15 @@ class _ProductState extends State<ListProduct> {
                               child: ClipRRect(
                                   borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
-                                  child: Image.asset(
-                                    'images/${product.photo}',
+                                  child: Image.file(
+                                    File('${product.photo}'),
                                     fit: BoxFit.cover,
                                   )),
                             ),
                             Container(
                               padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                               width: 150,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              child: Column(
                                 children: [
                                   Text(
                                     '${product.name}',

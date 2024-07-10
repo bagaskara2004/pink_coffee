@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'database/table_product.dart';
@@ -100,7 +102,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             SizedBox(
-              height: 200,
+              height: 220,
               child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: listProduct.length,
@@ -120,16 +122,15 @@ class _HomeState extends State<Home> {
                               child: ClipRRect(
                                   borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
-                                  child: Image.asset(
-                                    'images/${product.photo}',
+                                  child: Image.file(
+                                    File('${product.photo}'),
                                     fit: BoxFit.cover,
                                   )),
                             ),
                             Container(
                               padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
                               width: 150,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              child: Column(
                                 children: [
                                   Text(
                                     '${product.name}',
